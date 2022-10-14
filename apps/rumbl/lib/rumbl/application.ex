@@ -14,8 +14,6 @@ defmodule Rumbl.Application do
       RumblWeb.Telemetry,
       # Start the PubSub system
       {Phoenix.PubSub, name: Rumbl.PubSub},
-      # Start the Endpoint (http/https)
-      RumblWeb.Endpoint,
       # Start a worker by calling: Rumbl.Worker.start_link(arg)
       # {Rumbl.Worker, arg}
       RumblWeb.Presence
