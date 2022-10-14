@@ -11,7 +11,8 @@ config :rumbl, Rumbl.Repo,
   hostname: "localhost",
   database: "rumbl_test#{System.get_env("MIX_TEST_PARTITION")}",
   pool: Ecto.Adapters.SQL.Sandbox,
-  pool_size: 10
+  pool_size: 10,
+  port: 15432
 
 # We don't run a server during test. If one is required,
 # you can enable the server option below.
@@ -28,3 +29,5 @@ config :rumbl, Rumbl.Mailer, adapter: Swoosh.Adapters.Test
 
 # Initialize plugs at runtime for faster test compilation
 config :phoenix, :plug_init_mode, :runtime
+
+config :pdkdf2_elixir, :rounds, 1
