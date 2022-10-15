@@ -13,6 +13,7 @@ defmodule InfoSys.Counter do
   end
 
   def init(initial_val) do
+    Process.send_after(self(), :tick, 1_000)
     {:ok, initial_val}
   end
 
@@ -26,5 +27,11 @@ defmodule InfoSys.Counter do
 
   def handle_call(:val, _from, val) do
     {:reply, val, val}
+  end
+
+  def handle_info(:tick, val) do
+    IO.puts("tick #{val}")
+    Process.send_after(self(), :tick, 1_000)
+    {:noreply, val - 1}
   end
 end
